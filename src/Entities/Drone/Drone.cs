@@ -25,6 +25,11 @@ public class Drone : KinematicBody2D
 			facingLeft = !facingLeft;
 			droneSprite.FlipH = facingLeft;
 		}
+
+		if (Input.IsActionJustPressed("fire"))
+		{
+			// TODO: Fire action
+		}
 	}
 
 	public override void _Process(float delta)

@@ -7,3 +7,12 @@ D:\chunk\Documents\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.Assem
 D:\chunk\Documents\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.csproj.CoreCompileInputs.cache
 D:\chunk\Documents\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.dll
 D:\chunk\Documents\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.pdb
+C:\GitHub\GuardianDrone\.mono\temp\bin\Debug\GuardianDrone.dll
+C:\GitHub\GuardianDrone\.mono\temp\bin\Debug\GuardianDrone.pdb
+C:\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.AssemblyInfoInputs.cache
+C:\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.AssemblyInfo.cs
+C:\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.csproj.CoreCompileInputs.cache
+C:\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.dll
+C:\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.pdb
+C:\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.csproj.AssemblyReference.cache
+C:\GitHub\GuardianDrone\.mono\temp\obj\Debug\GuardianDrone.GeneratedMSBuildEditorConfig.editorconfig
