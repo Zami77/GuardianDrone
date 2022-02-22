@@ -1,11 +1,35 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Entities/Drone/Drone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Entities/Guarded/Guarded.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Levels/GuardedPathFollow2D.cs" type="Script" id=3]
+[ext_resource path="res://src/Entities/Guarded/Guarded.cs" type="Script" id=4]
+[ext_resource path="res://src/Entities/Enemies/BasicEnemy.tscn" type="PackedScene" id=5]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 144, 255, 0, 0, 0, 0, 279, 367, 0, 0, 0, 0, 374, 438, 0, 0, 0, 0, 555, 463, 0, 0, 0, 0, 737, 444, 0, 0, 0, 0, 846, 326, 0, 0, 0, 0, 868, 300, 0, 0, 0, 0, 870, 225, 0, 0, 0, 0, 861, 195, 0, 0, 0, 0, 810, 139, 0, 0, 0, 0, 678, 88, 0, 0, 0, 0, 548, 80, 0, 0, 0, 0, 415, 84, 0, 0, 0, 0, 300, 112, 0, 0, 0, 0, 211, 142, 0, 0, 0, 0, 160, 200, 0, 0, 0, 0, 142, 254 )
+}
+
+[node name="LevelTemplate" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 600, 338 )
 
 [node name="Drone" parent="." instance=ExtResource( 1 )]
 position = Vector2( 603, 337 )
+
+[node name="GuardedPath2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="GuardedPathFollow2D" type="PathFollow2D" parent="GuardedPath2D"]
+position = Vector2( 144, 255 )
+rotate = false
+cubic_interp = false
+script = ExtResource( 3 )
+
+[node name="Guarded" parent="GuardedPath2D/GuardedPathFollow2D" instance=ExtResource( 2 )]
+script = ExtResource( 4 )
+
+[node name="BasicEnemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 74, 56 )
