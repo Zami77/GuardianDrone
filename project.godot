@@ -59,6 +59,13 @@ fire={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Drone"
+2d_physics/layer_2="DroneProjectiles"
+2d_physics/layer_3="Guarded"
+2d_physics/layer_4="Enemies"
+
 [mono]
 
 debugger_agent/wait_timeout=15000

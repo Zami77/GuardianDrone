@@ -4,7 +4,7 @@ using System;
 public class Drone : KinematicBody2D
 {
 	const int DRONE_SPEED = 300;
-	const float FIRE_RATE = 0.15f;
+	const float FIRE_RATE = 0.25f;
 	Vector2 inputVector = Vector2.Zero;
 	bool facingLeft = false;
 	Sprite droneSprite;
@@ -50,7 +50,7 @@ public class Drone : KinematicBody2D
 			droneSprite.FlipH = facingLeft;
 		}
 
-		if (Input.IsActionJustPressed("fire"))
+		if (Input.IsActionPressed("fire"))
 		{
 			shoot();
 		}

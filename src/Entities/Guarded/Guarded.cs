@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Guarded : Area2D
+public class Guarded : KinematicBody2D
 {
 	// Declare member variables here. Examples:
 	// private int a = 2;
