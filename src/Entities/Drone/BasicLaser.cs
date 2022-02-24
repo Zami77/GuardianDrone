@@ -14,18 +14,15 @@ public class BasicLaser : KinematicBody2D
 		bulletSprite = GetNode<Sprite>("Sprite");
 		visibilityNotifier = GetNode<VisibilityNotifier2D>("VisibilityNotifier2D");
 	}
+	
 	public void Setup(bool _facingLeft)
 	{
 		facingLeft = _facingLeft;
 		bulletSprite.FlipH = facingLeft;
 	}
-	public override void _Process(float delta)
-	{
-		if (!visibilityNotifier.IsOnScreen())
-		{
-			QueueFree();
-		}	
 
+	private void moveAndCheckCollision(float delta)
+	{
 		var bulletDir = facingLeft ? Vector2.Left : Vector2.Right;
 		var collision = MoveAndCollide(bulletDir * delta * LASER_SPEED);
 
@@ -34,5 +31,15 @@ public class BasicLaser : KinematicBody2D
 			iDamageable.TakeDamage(laserDamage);
 			QueueFree();
 		}
+	}
+	
+	public override void _Process(float delta)
+	{
+		if (!visibilityNotifier.IsOnScreen())
+		{
+			QueueFree();
+		}	
+
+		moveAndCheckCollision(delta);
 	}
 }
