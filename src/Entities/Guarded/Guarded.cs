@@ -22,6 +22,7 @@ public class Guarded : KinematicBody2D, IGuarded
 	{
 		if (IsDead())
 		{
+			// TODO: Investigate better way to die than hide
 			Hide();
 		}
 	}
