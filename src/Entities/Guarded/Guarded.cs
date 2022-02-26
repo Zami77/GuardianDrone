@@ -1,21 +1,29 @@
 using Godot;
 using System;
 
-public class Guarded : KinematicBody2D
+public class Guarded : KinematicBody2D, IGuarded
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
-
-	// Called when the node enters the scene tree for the first time.
+	const int GUARDED_MAX_HEALTH = 50;
+	int guardedHealth = GUARDED_MAX_HEALTH;
+	AnimationPlayer effectsPlayer;
 	public override void _Ready()
 	{
-		
+		effectsPlayer = GetNode<AnimationPlayer>("EffectsPlayer");
+	}
+	public void TakeDamage(int dmg)
+	{
+		guardedHealth = Math.Max(guardedHealth - dmg, 0);
+		effectsPlayer.Play(AnimationType.TakeDamage);
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+	public bool IsDead() => guardedHealth == 0;
+
+	public override void _Process(float delta)
+	{
+		if (IsDead())
+		{
+			// TODO: Investigate better way to die than hide
+			Hide();
+		}
+	}
 }

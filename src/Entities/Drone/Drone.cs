@@ -18,19 +18,11 @@ public class Drone : KinematicBody2D
 		droneSprite = GetNode<Sprite>("Sprite");
 		firePoint = GetNode<Node2D>("FirePoint");
 		basicLaser = (PackedScene)ResourceLoader.Load("res://src/Entities/Drone/BasicLaser.tscn");
-	}
-
-	// Gets time in seconds
-	private float getTime() => OS.GetTicksMsec() / 1000.0f;
+	}	
 
 	private void shoot()
 	{
-		if (getTime() - fireTime < FIRE_RATE)
-		{
-			return;
-		}
-
-		fireTime = getTime();
+		fireTime = Helper.GetTime();
 		BasicLaser laser = basicLaser.Instance<BasicLaser>();
 		GetTree().Root.AddChild(laser);
 		laser.Setup(facingLeft);
@@ -50,7 +42,7 @@ public class Drone : KinematicBody2D
 			droneSprite.FlipH = facingLeft;
 		}
 
-		if (Input.IsActionPressed("fire"))
+		if (Input.IsActionPressed("fire") && Helper.IsCooledDown(fireTime, FIRE_RATE))
 		{
 			shoot();
 		}
