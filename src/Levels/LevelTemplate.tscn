@@ -12,6 +12,7 @@ _data = {
 }
 
 [node name="LevelTemplate" type="Node2D"]
+position = Vector2( -1, -1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 600, 338 )

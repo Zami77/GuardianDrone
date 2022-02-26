@@ -3,7 +3,7 @@ using System;
 
 public class BasicEnemy : KinematicBody2D, IEnemy, IDamageable
 {
-	const int BASIC_ENEMY_MOVE_SPEED = 100;
+	const int BASIC_ENEMY_MOVE_SPEED = 150;
 	const int BASIC_ENEMY_DAMAGE = 5;
 	const float BASIC_ENEMY_DAMAGE_RATE = 0.25f;
 	
@@ -21,7 +21,7 @@ public class BasicEnemy : KinematicBody2D, IEnemy, IDamageable
 	public void TakeDamage(int dmg)
 	{
 		enemyHealth = Math.Max(0, enemyHealth - dmg);
-		effectsPlayer.Play(AnimationType.TakeDamage);
+		effectsPlayer.Play("TakeDamage");
 	}
 
 	public bool IsDead() => enemyHealth == 0;
