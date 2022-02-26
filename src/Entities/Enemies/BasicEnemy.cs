@@ -1,32 +1,32 @@
 using Godot;
 using System;
 
-public class BasicEnemy : KinematicBody2D, IDamageable
+public class BasicEnemy : KinematicBody2D, IEnemy, IDamageable
 {
-	const int BASIC_ENEMY_MOVE_SPEED = 170;
+	const int BASIC_ENEMY_MOVE_SPEED = 100;
 	const int BASIC_ENEMY_DAMAGE = 5;
 	const float BASIC_ENEMY_DAMAGE_RATE = 0.25f;
-	const string TAKE_DAMAGE_ANIM = "TakeDamage";
+	
 	int enemyHealth = 50;
 	KinematicBody2D guarded;
-	AnimationPlayer animationPlayer;
+	AnimationPlayer effectsPlayer;
 	float attackTime;
 
 	public override void _Ready()
 	{
 		guarded = GetNode<KinematicBody2D>("../GuardedPath2D/GuardedPathFollow2D/Guarded");
-		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		effectsPlayer = GetNode<AnimationPlayer>("EffectsPlayer");
 	}
 
 	public void TakeDamage(int dmg)
 	{
 		enemyHealth = Math.Max(0, enemyHealth - dmg);
-		animationPlayer.Play(TAKE_DAMAGE_ANIM);
+		effectsPlayer.Play(AnimationType.TakeDamage);
 	}
 
 	public bool IsDead() => enemyHealth == 0;
 
-	private void attack(IGuarded iguarded)
+	public void Attack(IGuarded iguarded)
 	{
 		iguarded.TakeDamage(BASIC_ENEMY_DAMAGE);
 		attackTime = Helper.GetTime();
@@ -42,7 +42,7 @@ public class BasicEnemy : KinematicBody2D, IDamageable
 		{
 			if (!iguarded.IsDead())
 			{
-				attack(iguarded);
+				Attack(iguarded);
 			}
 		}
 	}

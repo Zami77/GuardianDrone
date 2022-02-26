@@ -32,4 +32,7 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="BasicEnemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 74, 56 )
+position = Vector2( 56, 549 )
+
+[node name="BasicEnemy2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 75, 96 )

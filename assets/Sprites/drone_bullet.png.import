@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/human_MC_test.png-9eb4ed1bd00128013d742441eac2f19f.stex"
+path="res://.import/drone_bullet.png-bf90241309669f71ed069008e5fda4f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/human_MC_test.png"
-dest_files=[ "res://.import/human_MC_test.png-9eb4ed1bd00128013d742441eac2f19f.stex" ]
+source_file="res://assets/Sprites/drone_bullet.png"
+dest_files=[ "res://.import/drone_bullet.png-bf90241309669f71ed069008e5fda4f9.stex" ]
 
 [params]
 
