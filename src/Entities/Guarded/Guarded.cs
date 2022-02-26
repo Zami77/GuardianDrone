@@ -13,7 +13,7 @@ public class Guarded : KinematicBody2D, IGuarded
 	public void TakeDamage(int dmg)
 	{
 		guardedHealth = Math.Max(guardedHealth - dmg, 0);
-		effectsPlayer.Play("TakeDamage");
+		effectsPlayer.Play(AnimationType.TakeDamage);
 	}
 
 	public bool IsDead() => guardedHealth == 0;
