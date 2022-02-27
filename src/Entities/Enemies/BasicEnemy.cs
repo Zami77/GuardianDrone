@@ -3,7 +3,7 @@ using System;
 
 public class BasicEnemy : KinematicBody2D, IEnemy, IDamageable
 {
-	const int BASIC_ENEMY_MOVE_SPEED = 170;
+	const int BASIC_ENEMY_MOVE_SPEED = 155;
 	const int BASIC_ENEMY_DAMAGE = 5;
 	const float BASIC_ENEMY_DAMAGE_RATE = 0.25f;
 	
