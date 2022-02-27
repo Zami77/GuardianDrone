@@ -3,7 +3,7 @@ using System;
 
 public class BasicLaser : KinematicBody2D
 {
-	const int LASER_SPEED = 400;
+	const int LASER_SPEED = 600;
 	int laserDamage = 10;
 	bool facingLeft = false;
 	Sprite bulletSprite;
