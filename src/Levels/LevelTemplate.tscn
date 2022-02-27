@@ -18,7 +18,7 @@ position = Vector2( 100, -257 )
 curve = SubResource( 1 )
 
 [node name="GuardedPathFollow2D" type="PathFollow2D" parent="GuardedPath2D"]
-position = Vector2( 144, 255 )
+position = Vector2( 142, 254 )
 rotate = false
 cubic_interp = false
 script = ExtResource( 3 )
