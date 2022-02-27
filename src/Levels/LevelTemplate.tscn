@@ -12,15 +12,10 @@ _data = {
 }
 
 [node name="LevelTemplate" type="Node2D"]
-position = Vector2( -1, -1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 600, 338 )
-
-[node name="Drone" parent="." instance=ExtResource( 1 )]
-position = Vector2( 603, 337 )
+position = Vector2( 1, -4 )
 
 [node name="GuardedPath2D" type="Path2D" parent="."]
+position = Vector2( -144, -257 )
 curve = SubResource( 1 )
 
 [node name="GuardedPathFollow2D" type="PathFollow2D" parent="GuardedPath2D"]
@@ -32,8 +27,17 @@ script = ExtResource( 3 )
 [node name="Guarded" parent="GuardedPath2D/GuardedPathFollow2D" instance=ExtResource( 2 )]
 script = ExtResource( 4 )
 
+[node name="Drone" parent="." instance=ExtResource( 1 )]
+position = Vector2( -314, 2 )
+
+[node name="LevelCamera" type="Camera2D" parent="Drone"]
+current = true
+process_mode = 0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
 [node name="BasicEnemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 56, 549 )
+position = Vector2( -211, 269 )
 
 [node name="BasicEnemy2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 75, 96 )
+position = Vector2( -143, -206 )
