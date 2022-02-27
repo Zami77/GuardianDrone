@@ -8,14 +8,13 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 144, 255, 0, 0, 0, 0, 279, 367, 0, 0, 0, 0, 374, 438, 0, 0, 0, 0, 555, 463, 0, 0, 0, 0, 737, 444, 0, 0, 0, 0, 846, 326, 0, 0, 0, 0, 868, 300, 0, 0, 0, 0, 870, 225, 0, 0, 0, 0, 861, 195, 0, 0, 0, 0, 810, 139, 0, 0, 0, 0, 678, 88, 0, 0, 0, 0, 548, 80, 0, 0, 0, 0, 415, 84, 0, 0, 0, 0, 300, 112, 0, 0, 0, 0, 211, 142, 0, 0, 0, 0, 160, 200, 0, 0, 0, 0, 142, 254 )
+"points": PoolVector2Array( 0, 0, 0, 0, 142, 254, 0, 0, 0, 0, 279, 367, 0, 0, 0, 0, 374, 438, 0, 0, 0, 0, 555, 463, 0, 0, 0, 0, 737, 444, 0, 0, 0, 0, 846, 326, 0, 0, 0, 0, 868, 300, 0, 0, 0, 0, 870, 225, 0, 0, 0, 0, 861, 195, 0, 0, 0, 0, 810, 139, 0, 0, 0, 0, 678, 88, 0, 0, 0, 0, 548, 80, 0, 0, 0, 0, 415, 84, 0, 0, 0, 0, 300, 112, 0, 0, 0, 0, 211, 142, 0, 0, 0, 0, 160, 200, 0, 0, 0, 0, 142, 254 )
 }
 
 [node name="LevelTemplate" type="Node2D"]
-position = Vector2( 1, -4 )
 
 [node name="GuardedPath2D" type="Path2D" parent="."]
-position = Vector2( -144, -257 )
+position = Vector2( 100, -257 )
 curve = SubResource( 1 )
 
 [node name="GuardedPathFollow2D" type="PathFollow2D" parent="GuardedPath2D"]
@@ -25,19 +24,18 @@ cubic_interp = false
 script = ExtResource( 3 )
 
 [node name="Guarded" parent="GuardedPath2D/GuardedPathFollow2D" instance=ExtResource( 2 )]
+position = Vector2( -2, 2 )
 script = ExtResource( 4 )
-
-[node name="Drone" parent="." instance=ExtResource( 1 )]
-position = Vector2( -314, 2 )
-
-[node name="LevelCamera" type="Camera2D" parent="Drone"]
-current = true
-process_mode = 0
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
 
 [node name="BasicEnemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( -211, 269 )
 
 [node name="BasicEnemy2" parent="." instance=ExtResource( 5 )]
 position = Vector2( -143, -206 )
+
+[node name="Drone" parent="." instance=ExtResource( 1 )]
+
+[node name="LevelCamera" type="Camera2D" parent="Drone"]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
