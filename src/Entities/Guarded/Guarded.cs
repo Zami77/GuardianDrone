@@ -3,6 +3,8 @@ using System;
 
 public class Guarded : KinematicBody2D, IGuarded
 {
+	[Signal]
+	delegate void PlayerTakeDamage(int curHealth, int maxHealth);
 	const int GUARDED_MAX_HEALTH = 50;
 	int guardedHealth = GUARDED_MAX_HEALTH;
 	AnimationPlayer effectsPlayer;
@@ -14,6 +16,7 @@ public class Guarded : KinematicBody2D, IGuarded
 	{
 		guardedHealth = Math.Max(guardedHealth - dmg, 0);
 		effectsPlayer.Play(AnimationType.TakeDamage);
+		this.EmitSignal("PlayerTakeDamage", guardedHealth, GUARDED_MAX_HEALTH);
 	}
 
 	public bool IsDead() => guardedHealth == 0;
