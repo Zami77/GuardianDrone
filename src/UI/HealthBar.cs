@@ -7,11 +7,11 @@ public class HealthBar : Control
 	TextureProgress healthBarUnder;
 	Tween updateTween;
 	[Export]
-	Color healtyColor = Color.ColorN("green");
+	Color healtyColor = Color.ColorN("Green");
 	[Export]
-	Color cautionColor = Color.ColorN("yellow");
+	Color cautionColor = Color.ColorN("Yellow");
 	[Export]
-	Color dangerColor = Color.ColorN("red");
+	Color dangerColor = Color.ColorN("Red");
 	[Export(PropertyHint.Range, "float, 0, 1, 0.05")]
 	float cautionZone = 0.5f;
 	[Export(PropertyHint.Range, "float, 0, 1, 0.05")]
@@ -20,8 +20,9 @@ public class HealthBar : Control
 
 	public override void _Ready()
 	{
-		healthBarOver = GetNode<TextureProgress>("HealthBarOver");
-		healthBarUnder = GetNode<TextureProgress>("HealthBarUnder");
+		healthBarOver = GetNode<TextureProgress>("./HealthBarOver");
+		healthBarUnder = GetNode<TextureProgress>("./HealthBarUnder");
+		healthBarUnder.TintProgress = dangerColor;
 		updateTween = GetNode<Tween>("UpdateTween");
 	}
 
@@ -53,5 +54,18 @@ public class HealthBar : Control
 	{
 		healthBarOver.MaxValue = maxHealth;
 		healthBarUnder.MaxValue = maxHealth;
+	}
+
+	/* Signal Checks */
+
+	private void _on_Guarded_PlayerTakeDamage(int curHealth)
+	{
+		OnHealthUpdated(curHealth);
+	}
+
+	private void _on_Guarded_PlayerInitHealth(int curHealth, int maxHealth)
+	{
+		OnMaxHealthUpdated(maxHealth);
+		OnHealthUpdated(curHealth);
 	}
 }

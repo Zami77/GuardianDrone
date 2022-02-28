@@ -4,19 +4,22 @@ using System;
 public class Guarded : KinematicBody2D, IGuarded
 {
 	[Signal]
-	delegate void PlayerTakeDamage(int curHealth, int maxHealth);
+	delegate void PlayerTakeDamage(int curHealth);
+	[Signal]
+	delegate void PlayerInitHealth(int curHealth, int maxHealth);
 	const int GUARDED_MAX_HEALTH = 50;
 	int guardedHealth = GUARDED_MAX_HEALTH;
 	AnimationPlayer effectsPlayer;
 	public override void _Ready()
 	{
 		effectsPlayer = GetNode<AnimationPlayer>("EffectsPlayer");
+		EmitSignal(nameof(PlayerInitHealth), guardedHealth, GUARDED_MAX_HEALTH);
 	}
 	public void TakeDamage(int dmg)
 	{
 		guardedHealth = Math.Max(guardedHealth - dmg, 0);
 		effectsPlayer.Play(AnimationType.TakeDamage);
-		this.EmitSignal("PlayerTakeDamage", guardedHealth, GUARDED_MAX_HEALTH);
+		this.EmitSignal(nameof(PlayerTakeDamage), guardedHealth);
 	}
 
 	public bool IsDead() => guardedHealth == 0;
