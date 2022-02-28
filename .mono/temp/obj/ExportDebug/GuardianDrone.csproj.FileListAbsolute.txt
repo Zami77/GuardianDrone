@@ -1,0 +1,9 @@
+C:\GitHub\GuardianDrone\.mono\temp\bin\ExportDebug\GuardianDrone.dll
+C:\GitHub\GuardianDrone\.mono\temp\bin\ExportDebug\GuardianDrone.pdb
+C:\GitHub\GuardianDrone\.mono\temp\obj\ExportDebug\GuardianDrone.csproj.AssemblyReference.cache
+C:\GitHub\GuardianDrone\.mono\temp\obj\ExportDebug\GuardianDrone.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHub\GuardianDrone\.mono\temp\obj\ExportDebug\GuardianDrone.AssemblyInfoInputs.cache
+C:\GitHub\GuardianDrone\.mono\temp\obj\ExportDebug\GuardianDrone.AssemblyInfo.cs
+C:\GitHub\GuardianDrone\.mono\temp\obj\ExportDebug\GuardianDrone.csproj.CoreCompileInputs.cache
+C:\GitHub\GuardianDrone\.mono\temp\obj\ExportDebug\GuardianDrone.dll
+C:\GitHub\GuardianDrone\.mono\temp\obj\ExportDebug\GuardianDrone.pdb
