@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class BasicEnemy : KinematicBody2D, IEnemy, IDamageable
+public class BasicEnemy : KinematicBody2D, IEnemy
 {
 	const int BASIC_ENEMY_MOVE_SPEED = 155;
 	const int BASIC_ENEMY_DAMAGE = 5;
