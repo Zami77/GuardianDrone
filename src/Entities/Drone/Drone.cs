@@ -1,10 +1,16 @@
 using Godot;
 using System;
 
-public class Drone : KinematicBody2D
+public class Drone : KinematicBody2D, IDrone
 {
+	[Signal]
+	delegate void DroneTakeDamage(int curHealth);
+	[Signal]
+	delegate void DroneInitHealth(int curHealth, int maxHealth);
 	const int DRONE_SPEED = 300;
 	const float FIRE_RATE = 0.25f;
+	const int DRONE_HEALTH = 100;
+	int curDroneHealth = DRONE_HEALTH;
 	Vector2 inputVector = Vector2.Zero;
 	bool facingLeft = false;
 	Sprite droneSprite;
@@ -18,6 +24,7 @@ public class Drone : KinematicBody2D
 		droneSprite = GetNode<Sprite>("Sprite");
 		firePoint = GetNode<Node2D>("FirePoint");
 		basicLaser = (PackedScene)ResourceLoader.Load("res://src/Entities/Drone/BasicLaser.tscn");
+		EmitSignal(nameof(DroneInitHealth), curDroneHealth, DRONE_HEALTH);
 	}	
 
 	private void shoot()
@@ -47,6 +54,16 @@ public class Drone : KinematicBody2D
 			shoot();
 		}
 	}
+
+	public void TakeDamage(int dmg)
+	{
+		curDroneHealth = Math.Max(curDroneHealth - dmg, 0);
+		// TODO: Set up take damage animation for drone
+		// effectsPlayer.Play(AnimationType.TakeDamage);
+		this.EmitSignal(nameof(DroneTakeDamage), curDroneHealth);
+	}
+
+	public bool IsDead() => curDroneHealth == 0;
 
 	public override void _Process(float delta)
 	{

@@ -1,8 +1,7 @@
 using Godot;
 using System;
 
-public interface IGuarded
+public interface IGuarded : IFriendly
 {
-    void TakeDamage(int dmg);
-    bool IsDead();
+    /* Marker Interface */
 }
