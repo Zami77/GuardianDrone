@@ -1,4 +1,4 @@
 public interface IEnemy
 {
-    void Attack(IGuarded iguarded);
+    void Attack(IFriendly ifriendly);
 }

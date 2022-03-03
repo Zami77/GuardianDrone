@@ -26,9 +26,9 @@ public class BasicEnemy : KinematicBody2D, IEnemy, IDamageable
 
 	public bool IsDead() => enemyHealth == 0;
 
-	public void Attack(IGuarded iguarded)
+	public void Attack(IFriendly ifriendly)
 	{
-		iguarded.TakeDamage(BASIC_ENEMY_DAMAGE);
+		ifriendly.TakeDamage(BASIC_ENEMY_DAMAGE);
 		attackTime = Helper.GetTime();
 	}
 
@@ -38,11 +38,11 @@ public class BasicEnemy : KinematicBody2D, IEnemy, IDamageable
 
 		var collision = MoveAndCollide(velocity);
 
-		if (collision?.Collider is IGuarded iguarded && Helper.IsCooledDown(attackTime, BASIC_ENEMY_DAMAGE_RATE))
+		if (collision?.Collider is IFriendly ifriendly && Helper.IsCooledDown(attackTime, BASIC_ENEMY_DAMAGE_RATE))
 		{
-			if (!iguarded.IsDead())
+			if (!ifriendly.IsDead())
 			{
-				Attack(iguarded);
+				Attack(ifriendly);
 			}
 		}
 	}

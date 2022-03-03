@@ -3,19 +3,19 @@ using System;
 
 public class HealthBar : Control
 {
-	TextureProgress healthBarOver;
-	TextureProgress healthBarUnder;
-	Tween updateTween;
+	protected TextureProgress healthBarOver;
+	protected TextureProgress healthBarUnder;
+	protected Tween updateTween;
 	[Export]
-	Color healtyColor = Color.ColorN("Green");
+	protected Color healtyColor = Color.ColorN("Green");
 	[Export]
-	Color cautionColor = Color.ColorN("Yellow");
+	protected Color cautionColor = Color.ColorN("Yellow");
 	[Export]
-	Color dangerColor = Color.ColorN("Red");
+	protected Color dangerColor = Color.ColorN("Red");
 	[Export(PropertyHint.Range, "float, 0, 1, 0.05")]
-	float cautionZone = 0.5f;
+	protected float cautionZone = 0.5f;
 	[Export(PropertyHint.Range, "float, 0, 1, 0.05")]
-	float dangerZone = 0.2f;
+	protected float dangerZone = 0.2f;
 
 
 	public override void _Ready()
@@ -34,7 +34,7 @@ public class HealthBar : Control
 		assignColor(curHealth);
 	}
 
-	private void assignColor(int curHealth)
+	protected void assignColor(int curHealth)
 	{
 		if (curHealth < healthBarOver.MaxValue * dangerZone)
 		{
@@ -54,18 +54,5 @@ public class HealthBar : Control
 	{
 		healthBarOver.MaxValue = maxHealth;
 		healthBarUnder.MaxValue = maxHealth;
-	}
-
-	/* Signal Checks */
-
-	private void _on_Guarded_PlayerTakeDamage(int curHealth)
-	{
-		OnHealthUpdated(curHealth);
-	}
-
-	private void _on_Guarded_PlayerInitHealth(int curHealth, int maxHealth)
-	{
-		OnMaxHealthUpdated(maxHealth);
-		OnHealthUpdated(curHealth);
 	}
 }
