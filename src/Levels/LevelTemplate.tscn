@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Entities/Drone/Drone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Entities/Guarded/Guarded.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/Entities/Enemies/BasicEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Tilemaps/TempTilemap.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/UI/HealthBarGuarded.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Levels/LevelCamera.cs" type="Script" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -41,14 +42,14 @@ script = ExtResource( 3 )
 position = Vector2( -2, 2 )
 IsInvincible = true
 
-[node name="Drone" parent="." instance=ExtResource( 1 )]
-position = Vector2( 46, 88 )
-
-[node name="LevelCamera" type="Camera2D" parent="Drone"]
-position = Vector2( -46, -88 )
+[node name="LevelCamera" type="Camera2D" parent="."]
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
+script = ExtResource( 8 )
+
+[node name="Drone" parent="." instance=ExtResource( 1 )]
+position = Vector2( 46, 88 )
 
 [node name="BasicEnemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( -219, 231 )
