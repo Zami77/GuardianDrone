@@ -16,6 +16,8 @@ public class Drone : KinematicBody2D, IDrone
 	Sprite droneSprite;
 	PackedScene basicLaser;
 	Node2D firePoint;
+	Camera2D levelCamera;
+	Vector2 lastCamPos;
 	float fireTime;
 	
 	
@@ -23,6 +25,8 @@ public class Drone : KinematicBody2D, IDrone
 	{
 		droneSprite = GetNode<Sprite>("Sprite");
 		firePoint = GetNode<Node2D>("FirePoint");
+		levelCamera = GetNode<Camera2D>("../LevelCamera");
+		lastCamPos = levelCamera.GetCameraScreenCenter();
 		basicLaser = (PackedScene)ResourceLoader.Load("res://src/Entities/Drone/BasicLaser.tscn");
 		EmitSignal(nameof(DroneInitHealth), curDroneHealth, DRONE_HEALTH);
 	}	
@@ -34,6 +38,12 @@ public class Drone : KinematicBody2D, IDrone
 		GetParent().AddChild(laser);
 		laser.Setup(facingLeft);
 		laser.Position = firePoint.GlobalPosition;
+	}
+
+	private void keepWithCamera(float delta)
+	{
+		Position += Helper.DeltaOfVectors(lastCamPos, levelCamera.GetCameraScreenCenter());
+		lastCamPos = levelCamera.GetCameraScreenCenter();
 	}
 	
 	private void handleInput(float delta)
@@ -53,6 +63,8 @@ public class Drone : KinematicBody2D, IDrone
 		{
 			shoot();
 		}
+
+		keepWithCamera(delta);
 	}
 
 	public void TakeDamage(int dmg)
