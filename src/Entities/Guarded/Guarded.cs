@@ -7,11 +7,14 @@ public class Guarded : KinematicBody2D, IGuarded
 	delegate void PlayerTakeDamage(int curHealth);
 	[Signal]
 	delegate void PlayerInitHealth(int curHealth, int maxHealth);
+	[Export]
+	public bool IsInvincible = false;
 	const int GUARDED_MAX_HEALTH = 50;
 	int guardedHealth = GUARDED_MAX_HEALTH;
 	AnimationPlayer effectsPlayer;
 	public override void _Ready()
 	{
+		guardedHealth = IsInvincible ? int.MaxValue : guardedHealth;
 		effectsPlayer = GetNode<AnimationPlayer>("EffectsPlayer");
 		EmitSignal(nameof(PlayerInitHealth), guardedHealth, GUARDED_MAX_HEALTH);
 	}

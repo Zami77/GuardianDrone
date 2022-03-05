@@ -32,19 +32,28 @@ public class BasicEnemy : KinematicBody2D, IEnemy
 		attackTime = Helper.GetTime();
 	}
 
-	private void handleMovement(float delta)
+	private void checkCollisions()
 	{
-		var velocity = Position.DirectionTo(guarded.GlobalPosition) * BASIC_ENEMY_MOVE_SPEED * delta;
-
-		var collision = MoveAndCollide(velocity);
-
-		if (collision?.Collider is IFriendly ifriendly && Helper.IsCooledDown(attackTime, BASIC_ENEMY_DAMAGE_RATE))
+		for(int i = 0; i < GetSlideCount(); i++)
 		{
-			if (!ifriendly.IsDead())
+			var collision = GetSlideCollision(i);
+			if (collision?.Collider is IFriendly ifriendly && Helper.IsCooledDown(attackTime, BASIC_ENEMY_DAMAGE_RATE))
 			{
-				Attack(ifriendly);
+				if (!ifriendly.IsDead())
+				{
+					Attack(ifriendly);
+				}
 			}
 		}
+
+	}
+	private void handleMovement(float delta)
+	{
+		var velocity = Position.DirectionTo(guarded.GlobalPosition) * BASIC_ENEMY_MOVE_SPEED;
+
+		MoveAndSlide(velocity);
+
+		checkCollisions();
 	}
 
 	public override void _Process(float delta)

@@ -31,9 +31,9 @@ public class Drone : KinematicBody2D, IDrone
 	{
 		fireTime = Helper.GetTime();
 		BasicLaser laser = basicLaser.Instance<BasicLaser>();
-		GetTree().Root.AddChild(laser);
+		GetParent().AddChild(laser);
 		laser.Setup(facingLeft);
-		laser.GlobalPosition = firePoint.GlobalPosition;
+		laser.Position = firePoint.GlobalPosition;
 	}
 	
 	private void handleInput(float delta)
@@ -41,7 +41,7 @@ public class Drone : KinematicBody2D, IDrone
 		inputVector.x = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
 		inputVector.y = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
 
-		GlobalPosition += inputVector.Normalized() * DRONE_SPEED * delta;
+		MoveAndCollide(inputVector.Normalized() * DRONE_SPEED * delta);
 
 		if (Input.IsActionJustPressed("switch_dir")) 
 		{

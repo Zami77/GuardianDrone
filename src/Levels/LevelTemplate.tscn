@@ -39,19 +39,22 @@ script = ExtResource( 3 )
 
 [node name="Guarded" parent="GuardedPath2D/GuardedPathFollow2D" instance=ExtResource( 2 )]
 position = Vector2( -2, 2 )
+IsInvincible = true
+
+[node name="Drone" parent="." instance=ExtResource( 1 )]
+position = Vector2( 46, 88 )
+
+[node name="LevelCamera" type="Camera2D" parent="Drone"]
+position = Vector2( -46, -88 )
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
 
 [node name="BasicEnemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( -219, 231 )
 
 [node name="BasicEnemy2" parent="." instance=ExtResource( 5 )]
 position = Vector2( -101, -248 )
-
-[node name="Drone" parent="." instance=ExtResource( 1 )]
-
-[node name="LevelCamera" type="Camera2D" parent="Drone"]
-current = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
 
 [node name="BasicEnemy3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 239, -258 )
@@ -66,7 +69,7 @@ position = Vector2( 288, 308 )
 position = Vector2( -208, -155 )
 
 [node name="BasicEnemy7" parent="." instance=ExtResource( 5 )]
-position = Vector2( -5, 282 )
+position = Vector2( -10, 281 )
 
 [connection signal="PlayerInitHealth" from="GuardedPath2D/GuardedPathFollow2D/Guarded" to="HUD/HealthBarGuarded" method="_on_Guarded_PlayerInitHealth"]
 [connection signal="PlayerTakeDamage" from="GuardedPath2D/GuardedPathFollow2D/Guarded" to="HUD/HealthBarGuarded" method="_on_Guarded_PlayerTakeDamage"]

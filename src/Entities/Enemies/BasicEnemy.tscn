@@ -40,7 +40,7 @@ tracks/0/keys = {
 
 [node name="BasicEnemy" type="KinematicBody2D"]
 collision_layer = 32
-collision_mask = 14
+collision_mask = 46
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
