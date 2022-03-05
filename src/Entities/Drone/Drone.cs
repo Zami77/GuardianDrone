@@ -40,7 +40,7 @@ public class Drone : KinematicBody2D, IDrone
 		laser.Position = firePoint.GlobalPosition;
 	}
 
-	private void keepWithCamera(float delta)
+	private void keepWithCamera()
 	{
 		Position += Helper.DeltaOfVectors(lastCamPos, levelCamera.GetCameraScreenCenter());
 		lastCamPos = levelCamera.GetCameraScreenCenter();
@@ -64,7 +64,7 @@ public class Drone : KinematicBody2D, IDrone
 			shoot();
 		}
 
-		keepWithCamera(delta);
+		keepWithCamera();
 	}
 
 	public void TakeDamage(int dmg)
