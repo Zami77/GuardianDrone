@@ -51,6 +51,7 @@ public class Drone : KinematicBody2D, IDrone
 		inputVector.x = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
 		inputVector.y = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
 
+		keepWithCamera();
 		MoveAndCollide(inputVector.Normalized() * DRONE_SPEED * delta);
 
 		if (Input.IsActionJustPressed("switch_dir")) 
@@ -63,8 +64,6 @@ public class Drone : KinematicBody2D, IDrone
 		{
 			shoot();
 		}
-
-		keepWithCamera();
 	}
 
 	public void TakeDamage(int dmg)
